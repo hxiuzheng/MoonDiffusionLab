@@ -1,4 +1,4 @@
 import {
-  "username/moon_diffusion_lab/core",
+  "hxiuzheng/moon_diffusion_lab/core",
   "moonbitlang/core/math",
 }

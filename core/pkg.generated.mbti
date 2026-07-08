@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "username/moon_diffusion_lab/core"
+package "hxiuzheng/moon_diffusion_lab/core"
 
 import {
   "moonbitlang/core/debug",

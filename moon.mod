@@ -1,10 +1,10 @@
-name = "username/moon_diffusion_lab"
+name = "hxiuzheng/moon_diffusion_lab"
 
 version = "0.1.0"
 
 readme = "README.mbt.md"
 
-repository = "https://github.com/username/moon_diffusion_lab"
+repository = "https://github.com/hxiuzheng/moon_diffusion_lab"
 
 license = "Apache-2.0"
 

@@ -1,7 +1,7 @@
 import {
-  "username/moon_diffusion_lab/core",
-  "username/moon_diffusion_lab/schedule",
-  "username/moon_diffusion_lab/model",
-  "username/moon_diffusion_lab/dataset",
+  "hxiuzheng/moon_diffusion_lab/core",
+  "hxiuzheng/moon_diffusion_lab/schedule",
+  "hxiuzheng/moon_diffusion_lab/model",
+  "hxiuzheng/moon_diffusion_lab/dataset",
   "moonbitlang/core/math",
 }
