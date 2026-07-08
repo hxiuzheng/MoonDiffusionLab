@@ -1,0 +1,38 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "username/moon_diffusion_lab/diffusion"
+
+import {
+  "moonbitlang/core/debug",
+  "username/moon_diffusion_lab/core",
+  "username/moon_diffusion_lab/model",
+  "username/moon_diffusion_lab/schedule",
+}
+
+// Values
+pub fn demo_forward_two_moons(Int, Int, @core.Rng, @schedule.DiffusionSchedule) -> Array[@core.Vec2]
+
+pub fn q_sample(@core.Vec2, Int, @core.Vec2, @schedule.DiffusionSchedule) -> @core.Vec2
+
+pub fn q_sample_batch(Array[@core.Vec2], Int, @core.Rng, @schedule.DiffusionSchedule) -> Array[@core.Vec2]
+
+pub fn sample_ddim_analytical(Int, @model.AnalyticalModel, @schedule.DiffusionSchedule, @core.Rng, num_steps? : Int) -> (Array[@core.Vec2], Trajectory)
+
+pub fn sample_ddpm_analytical(Int, @model.AnalyticalModel, @schedule.DiffusionSchedule, @core.Rng, record_interval? : Int) -> (Array[@core.Vec2], Trajectory)
+
+pub fn sample_euler_analytical(Int, @model.AnalyticalModel, @schedule.DiffusionSchedule, @core.Rng, num_steps? : Int) -> (Array[@core.Vec2], Trajectory)
+
+// Errors
+
+// Types and methods
+pub(all) struct Trajectory {
+  steps_recorded : Array[Int]
+  frames : Array[Array[@core.Vec2]]
+} derive(Eq, @debug.Debug)
+pub fn Trajectory::add_frame(Self, Int, Array[@core.Vec2]) -> Unit
+pub fn Trajectory::new() -> Self
+pub fn Trajectory::num_frames(Self) -> Int
+
+// Type aliases
+
+// Traits
+

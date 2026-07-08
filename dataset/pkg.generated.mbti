@@ -1,0 +1,24 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "username/moon_diffusion_lab/dataset"
+
+import {
+  "username/moon_diffusion_lab/core",
+}
+
+// Values
+pub fn sample_bimodal(Int, dist? : Double, noise? : Double, @core.Rng) -> Array[@core.Vec2]
+
+pub fn sample_gmm_ring(Int, radius? : Double, noise? : Double, @core.Rng) -> Array[@core.Vec2]
+
+pub fn sample_swiss_roll(Int, noise? : Double, @core.Rng) -> Array[@core.Vec2]
+
+pub fn sample_two_moons(Int, noise? : Double, @core.Rng) -> Array[@core.Vec2]
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

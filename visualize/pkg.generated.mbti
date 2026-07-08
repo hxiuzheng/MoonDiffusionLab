@@ -1,0 +1,27 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "username/moon_diffusion_lab/visualize"
+
+import {
+  "username/moon_diffusion_lab/core",
+  "username/moon_diffusion_lab/diffusion",
+  "username/moon_diffusion_lab/model",
+  "username/moon_diffusion_lab/schedule",
+}
+
+// Values
+pub fn generate_html_report(@diffusion.Trajectory, title? : String) -> String
+
+pub fn render_ascii_scatter(Array[@core.Vec2], width? : Int, height? : Int, x_min? : Double, x_max? : Double, y_min? : Double, y_max? : Double, title? : String) -> String
+
+pub fn render_svg_scatter(Array[@core.Vec2], width? : Int, height? : Int, x_min? : Double, x_max? : Double, y_min? : Double, y_max? : Double, point_color? : String, bg_color? : String) -> String
+
+pub fn render_svg_vector_field(@model.AnalyticalModel, @schedule.DiffusionSchedule, Int, grid_size? : Int, width? : Int, height? : Int, x_min? : Double, x_max? : Double, y_min? : Double, y_max? : Double) -> String
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+

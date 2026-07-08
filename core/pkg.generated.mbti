@@ -1,0 +1,59 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "username/moon_diffusion_lab/core"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn mean_vec2(Array[Vec2]) -> Vec2
+
+pub fn sliced_wasserstein_approx(Array[Vec2], Array[Vec2]) -> Double
+
+pub fn variance_vec2(Array[Vec2]) -> Vec2
+
+// Errors
+
+// Types and methods
+pub(all) struct Matrix {
+  rows : Int
+  cols : Int
+  data : Array[Double]
+} derive(Eq, @debug.Debug)
+pub fn Matrix::get(Self, Int, Int) -> Double
+pub fn Matrix::matvec2(Self, Vec2) -> Vec2
+pub fn Matrix::new(Int, Int, init? : Double) -> Self
+pub fn Matrix::set(Self, Int, Int, Double) -> Unit
+
+pub(all) struct Rng {
+  mut state : UInt64
+} derive(Eq, @debug.Debug)
+pub fn Rng::new(seed? : UInt64) -> Self
+pub fn Rng::next_double(Self) -> Double
+pub fn Rng::next_normal(Self, mean? : Double, std? : Double) -> Double
+pub fn Rng::next_uint64(Self) -> UInt64
+pub fn Rng::next_vec2_normal(Self, mean? : Vec2, std? : Double) -> Vec2
+
+pub(all) struct Vec2 {
+  x : Double
+  y : Double
+} derive(Eq, @debug.Debug)
+pub fn Vec2::dist(Self, Self) -> Double
+pub fn Vec2::div_scalar(Self, Double) -> Self
+pub fn Vec2::dot(Self, Self) -> Double
+pub fn Vec2::lerp(Self, Self, Double) -> Self
+pub fn Vec2::new(Double, Double) -> Self
+pub fn Vec2::norm(Self) -> Double
+pub fn Vec2::norm_sqr(Self) -> Double
+pub fn Vec2::normalize(Self) -> Self
+pub fn Vec2::scale(Self, Double) -> Self
+pub fn Vec2::zero() -> Self
+pub impl Add for Vec2
+pub impl Div for Vec2
+pub impl Mul for Vec2
+pub impl Sub for Vec2
+
+// Type aliases
+
+// Traits
+
