@@ -119,3 +119,14 @@ test "sliced wasserstein distance" {
     ),
   )
 }
+
+///|
+test "bench: tensor normal generation throughput" {
+  let rng = Rng::new(seed=12345UL)
+  let samples = Array::make(500, Vec2::zero())
+  for i in 0..<500 {
+    samples[i] = rng.next_vec2_normal()
+  }
+  inspect(samples.length(), content="500")
+}
+
