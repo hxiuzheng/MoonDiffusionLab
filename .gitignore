@@ -1,0 +1,11 @@
+.repos/
+.mooncakes/
+*.exe
+*.wasm
+*.js
+*.svg
+*.json
+!README*.json
+.DS_Store
+target/
+_build/
