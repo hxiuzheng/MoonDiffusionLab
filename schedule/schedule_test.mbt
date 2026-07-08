@@ -46,3 +46,20 @@ test "sigmoid schedule properties" {
   inspect(sched.betas[0] < sched.betas[25], content="true")
   inspect(sched.betas[25] < sched.betas[49], content="true")
 }
+
+///|
+test "metrics: schedule variance and boundary assertions" {
+  let sched = DiffusionSchedule::create(
+    100,
+    Linear(beta_start=0.0001, beta_end=0.02),
+  )
+  let mut sum_beta = 0.0
+  for b in sched.betas {
+    sum_beta = sum_beta + b
+  }
+  let mean_beta = sum_beta / 100.0
+  inspect(mean_beta > 0.005 && mean_beta < 0.015, content="true")
+  inspect(sched.alphas_cumprod[99] > 0.0, content="true")
+  inspect(sched.alphas_cumprod[99] < 1.0, content="true")
+}
+
