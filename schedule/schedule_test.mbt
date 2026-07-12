@@ -62,4 +62,3 @@ test "metrics: schedule variance and boundary assertions" {
   inspect(sched.alphas_cumprod[99] > 0.0, content="true")
   inspect(sched.alphas_cumprod[99] < 1.0, content="true")
 }
-

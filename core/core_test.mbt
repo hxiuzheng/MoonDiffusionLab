@@ -129,4 +129,3 @@ test "bench: tensor normal generation throughput" {
   }
   inspect(samples.length(), content="500")
 }
-
