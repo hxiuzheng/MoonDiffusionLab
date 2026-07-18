@@ -1,54 +1,66 @@
-﻿# MoonDiffusionLab 扩散模型原理实验工具箱
+# MoonDiffusionLab 扩散模型原理实验工具箱
 
 [![MoonBit](https://img.shields.io/badge/Language-MoonBit-00ffcc?style=flat-square)](https://www.moonbitlang.com/)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 [![OSC 2026](https://img.shields.io/badge/Competition-OSC%202026-ff3366?style=flat-square)](https://moonbitlang.github.io/OSC2026/)
-[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-111827?style=flat-square)](./.github/workflows/test.yml)
+[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-111827?style=flat-square)](./.github/workflows/check.yml)
 
-MoonDiffusionLab 是一个纯 MoonBit 实现的 1D/2D Toy Diffusion 教学与实验工具箱，面向生成模型原理演示、采样过程观察和可视化对比。
-
-## 项目特点
-
-- 纯 MoonBit 原生实现，覆盖 `core`、`schedule`、`dataset`、`model`、`diffusion`、`visualize`、`cmd/lab` 七个模块
-- 支持 Linear、Cosine、Sigmoid 噪声调度
-- 支持 Two Moons、Swiss Roll、GMM Ring、Bimodal 等 toy 数据集
-- 提供 Analytical Score Field 与 Toy MLP 两种评分模型
-- 集成 DDPM、DDIM、Euler ODE 三类采样方式
-- 支持终端 ASCII、SVG 和 HTML 报告输出
+MoonDiffusionLab 是一个基于 **MoonBit v0.10.3** 纯原生实现的 1D/2D Toy Diffusion 教学与实验工具箱，面向生成模型原理演示、采样过程观察和多模态可视化对比。
 
 ## 快速开始
 
-运行主程序：
+### 1. 环境准备与克隆
+确保您已安装最新版 MoonBit 工具链（推荐 `v0.10.3` 或以上）。
+```bash
+git clone https://github.com/hxiuzheng/MoonDiffusionLab.git
+cd MoonDiffusionLab
+moon install
+```
 
+### 2. 作为依赖包引入 (mooncakes.io)
+您可以直接在您的项目中通过 `moon add` 引入本库：
+```bash
+moon add hxiuzheng/moon_diffusion_lab
+```
+
+### 3. 本地运行与产物复现
+运行内置的实验主程序直接在控制台观看 ASCII 扩散动画：
 ```bash
 moon run cmd/lab
 ```
-
-运行测试：
-
+**可视化产物（SVG/HTML）真实落盘复现**：
+本项目支持将采样流场和多帧交互报告保存为静态文件。您可以直接运行脚本生成（或使用 `>` 重定向输出）：
 ```bash
+# 生成交互式网页报告
+moon run cmd/lab -- target html > assets/demo.html
+# 生成流场矢量图
+moon run cmd/lab -- target svg > assets/demo.svg
+```
+
+### 4. 测试与构建
+```bash
+moon check
+moon build
 moon test
 ```
 
-运行检查与接口生成：
+## 项目特点
 
-```bash
-moon check
-moon info
-```
+- 纯 MoonBit 原生实现，无外部依赖。
+- 支持 Linear、Cosine、Sigmoid 噪声调度。
+- 涵盖 Two Moons、Swiss Roll、GMM Ring、Bimodal 等 toy 数据集。
+- 提供 Analytical Score Field 与 Toy MLP 两种预测模型。
+- 集成 DDPM、DDIM、Euler ODE 采样器及 JSON、Markdown 导出。
+- 支持终端 ASCII、SVG 流场和交互式 HTML 报告多模态呈现。
 
 ## CI
 
-仓库已补充 GitHub Actions 工作流，推送或提交流时会自动执行：
-
+仓库已补充 GitHub Actions 自动化工作流，每次推送时会自动执行以下步骤（不再使用旧版不支持的参数）：
 ```bash
-moon check --target all
-moon fmt --deny-warn
-moon info --deny-warn
-moon test --target all
+moon check
+moon build
+moon test
 ```
-
-其中 `moontest` 对应的就是 MoonBit 的 `moon test` 阶段。
 
 ## 代码示例
 
@@ -76,16 +88,11 @@ fn main {
 
 ## 结项状态
 
-- 已通过本地 `moon check`
-- 已通过本地 `moon test`（19/19）
-- 已补齐 GitHub Actions CI
-- 已提供 Apache-2.0 许可证
-
-## 相关文档
-
-- [OSC2026 合规验证报告](docs/OSC2026_COMPLIANCE.md)
-- [OSC2026 自查报告](OSC2026_SELF_REVIEW.md)
-- [项目申报书](MoonDiffusionLab_申报书.md)
+- 已通过最新版 `moon check`, `moon build`, `moon test` (19/19)。
+- 已完善 `ToyMLP` 的 DDPM 采样闭环。
+- 已补齐 GitHub Actions CI 流水线。
+- 已发布至 [mooncakes.io](https://mooncakes.io/)。
+- 提供真正的落盘示例 (`assets/demo.svg` 与 `assets/demo.html`)。
 
 ## 许可证
 

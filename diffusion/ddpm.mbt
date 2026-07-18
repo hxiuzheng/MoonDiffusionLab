@@ -53,3 +53,58 @@ pub fn sample_ddpm_analytical(
   }
   (x, traj)
 }
+
+///|
+/// 使用 ToyMLP 进行 DDPM 采样
+pub fn sample_ddpm_mlp(
+  count : Int,
+  model : @model.ToyMLP,
+  sched : @schedule.DiffusionSchedule,
+  rng : @core.Rng,
+  record_interval? : Int = 10,
+) -> (Array[@core.Vec2], Trajectory) {
+  let len = count
+  let mut x = Array::make(len, @core.Vec2::zero())
+  for i in 0..<len {
+    x[i] = rng.next_vec2_normal()
+  }
+
+  let traj = Trajectory::new()
+  traj.add_frame(sched.steps - 1, x)
+
+  let steps = sched.steps
+  for step_idx in 0..<steps {
+    let t = steps - 1 - step_idx
+    let alpha_t = sched.get_alpha(t)
+    let beta_t = sched.betas[t]
+    let sqrt_alpha_t = alpha_t.sqrt()
+    let sqrt_one_minus_alpha_bar = sched.get_sqrt_one_minus_alpha_bar(t)
+    let sigma_t = sched.posterior_variance[t].sqrt()
+
+    let next_x = Array::make(len, @core.Vec2::zero())
+    for i in 0..<len {
+      let x_t = x[i]
+      let time_emb = t.to_double() / steps.to_double()
+      let eps = model.predict(x_t, time_emb)
+
+      let coeff = if sqrt_one_minus_alpha_bar < 1.0e-10 {
+        0.0
+      } else {
+        beta_t / sqrt_one_minus_alpha_bar
+      }
+      let mu = (x_t - eps.scale(coeff)).div_scalar(sqrt_alpha_t)
+
+      if t == 0 {
+        next_x[i] = mu
+      } else {
+        let z = rng.next_vec2_normal()
+        next_x[i] = mu + z.scale(sigma_t)
+      }
+    }
+    x = next_x
+    if t % record_interval == 0 || t == 0 {
+      traj.add_frame(t, x)
+    }
+  }
+  (x, traj)
+}

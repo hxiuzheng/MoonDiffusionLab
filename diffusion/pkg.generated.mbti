@@ -19,6 +19,8 @@ pub fn sample_ddim_analytical(Int, @model.AnalyticalModel, @schedule.DiffusionSc
 
 pub fn sample_ddpm_analytical(Int, @model.AnalyticalModel, @schedule.DiffusionSchedule, @core.Rng, record_interval? : Int) -> (Array[@core.Vec2], Trajectory)
 
+pub fn sample_ddpm_mlp(Int, @model.ToyMLP, @schedule.DiffusionSchedule, @core.Rng, record_interval? : Int) -> (Array[@core.Vec2], Trajectory)
+
 pub fn sample_euler_analytical(Int, @model.AnalyticalModel, @schedule.DiffusionSchedule, @core.Rng, num_steps? : Int) -> (Array[@core.Vec2], Trajectory)
 
 // Errors

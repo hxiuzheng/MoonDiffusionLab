@@ -114,6 +114,37 @@ fn main {
     "\n",
   )
 
+  // 解析命令行参数用于输出产物复现
+  let args = @sys.get_cli_args()
+  let mut mode = "cli"
+  for i in 0..<args.length() {
+    if args[i] == "html" {
+      mode = "html"
+    } else if args[i] == "svg" {
+      mode = "svg"
+    }
+  }
+
+  if mode == "html" {
+    let html_report = @visualize.generate_html_report(
+      ddpm_traj,
+      title="MoonDiffusionLab Two Moons Experiment",
+    )
+    println(html_report)
+    return
+  }
+
+  if mode == "svg" {
+    let svg_field = @visualize.render_svg_vector_field(
+      model_moons,
+      sched,
+      10,
+      grid_size=10,
+    )
+    println(svg_field)
+    return
+  }
+
   // 实验三：双峰分布与 Euler ODE 轨迹
   println("[Experiment 3] Bimodal Distribution - Probability Flow Euler ODE")
   let bimodal = @dataset.sample_bimodal(100, dist=1.8, noise=0.15, rng)
@@ -134,27 +165,23 @@ fn main {
     ),
   )
 
-  // 实验四：生成 HTML 报告与矢量场
-  println("[Experiment 4] Generating Multimodal Visualizations...")
-  let html_report = @visualize.generate_html_report(
-    ddpm_traj,
-    title="MoonDiffusionLab Two Moons Experiment",
-  )
-  println(
-    "--> Successfully generated HTML interactive report (" +
-    html_report.length().to_string() +
-    " bytes).",
-  )
-  let svg_field = @visualize.render_svg_vector_field(
-    model_moons,
+  // 实验四：ToyMLP 采样整合
+  println("[Experiment 4] ToyMLP Integration - DDPM Random Denoising")
+  let toy_mlp = @model.ToyMLP::new(rng)
+  let (mlp_samples, _) = @diffusion.sample_ddpm_mlp(
+    100,
+    toy_mlp,
     sched,
-    10,
-    grid_size=10,
+    rng,
+    record_interval=10,
   )
   println(
-    "--> Successfully rendered ODE Score Vector Field SVG (" +
-    svg_field.length().to_string() +
-    " bytes).",
+    @visualize.render_ascii_scatter(
+      mlp_samples,
+      width=50,
+      height=18,
+      title="ToyMLP DDPM Denoised Result (Untrained)",
+    ),
   )
 
   println(
@@ -163,6 +190,7 @@ fn main {
   println(
     "   All diffusion experiments completed successfully!                ",
   )
+  println("   Use `moon run cmd/lab -- html > demo.html` to generate HTML.   ")
   println(
     "====================================================================",
   )
