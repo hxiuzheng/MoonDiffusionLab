@@ -1,11 +1,10 @@
-{
-  "is_main": true,
-  "import": [
-    "hxiuzheng/moon_diffusion_lab/core",
-    "hxiuzheng/moon_diffusion_lab/schedule",
-    "hxiuzheng/moon_diffusion_lab/model",
-    "hxiuzheng/moon_diffusion_lab/dataset",
-    "hxiuzheng/moon_diffusion_lab/diffusion",
-    "hxiuzheng/moon_diffusion_lab/visualize"
-  ]
+package hxiuzheng/moon_diffusion_lab/cmd/export_html
+
+import {
+  "hxiuzheng/moon_diffusion_lab/core"
+  "hxiuzheng/moon_diffusion_lab/dataset"
+  "hxiuzheng/moon_diffusion_lab/diffusion"
+  "hxiuzheng/moon_diffusion_lab/model"
+  "hxiuzheng/moon_diffusion_lab/schedule"
+  "hxiuzheng/moon_diffusion_lab/visualize"
 }
