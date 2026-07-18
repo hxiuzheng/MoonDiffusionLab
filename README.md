@@ -32,9 +32,9 @@ moon run cmd/lab
 本项目支持将采样流场和多帧交互报告保存为静态文件。您可以直接运行脚本生成（或使用 `>` 重定向输出）：
 ```bash
 # 生成交互式网页报告
-moon run cmd/lab -- target html > assets/demo.html
+moon run cmd/export_html > assets/demo.html
 # 生成流场矢量图
-moon run cmd/lab -- target svg > assets/demo.svg
+moon run cmd/export_svg > assets/demo.svg
 ```
 
 ### 4. 测试与构建

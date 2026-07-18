@@ -114,37 +114,6 @@ fn main {
     "\n",
   )
 
-  // 解析命令行参数用于输出产物复现
-  let args = @sys.get_cli_args()
-  let mut mode = "cli"
-  for i in 0..<args.length() {
-    if args[i] == "html" {
-      mode = "html"
-    } else if args[i] == "svg" {
-      mode = "svg"
-    }
-  }
-
-  if mode == "html" {
-    let html_report = @visualize.generate_html_report(
-      ddpm_traj,
-      title="MoonDiffusionLab Two Moons Experiment",
-    )
-    println(html_report)
-    return
-  }
-
-  if mode == "svg" {
-    let svg_field = @visualize.render_svg_vector_field(
-      model_moons,
-      sched,
-      10,
-      grid_size=10,
-    )
-    println(svg_field)
-    return
-  }
-
   // 实验三：双峰分布与 Euler ODE 轨迹
   println("[Experiment 3] Bimodal Distribution - Probability Flow Euler ODE")
   let bimodal = @dataset.sample_bimodal(100, dist=1.8, noise=0.15, rng)
