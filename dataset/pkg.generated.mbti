@@ -6,6 +6,10 @@ import {
 }
 
 // Values
+pub fn sample_1d_gaussian(Int, mean? : Double, std? : Double, @core.Rng) -> Array[@core.Vec2]
+
+pub fn sample_1d_uniform(Int, min_x? : Double, max_x? : Double, @core.Rng) -> Array[@core.Vec2]
+
 pub fn sample_bimodal(Int, dist? : Double, noise? : Double, @core.Rng) -> Array[@core.Vec2]
 
 pub fn sample_gmm_ring(Int, radius? : Double, noise? : Double, @core.Rng) -> Array[@core.Vec2]

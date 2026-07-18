@@ -9,7 +9,11 @@ import {
 }
 
 // Values
+pub fn export_trajectory_json(@diffusion.Trajectory) -> String
+
 pub fn generate_html_report(@diffusion.Trajectory, title? : String) -> String
+
+pub fn generate_markdown_report(title? : String, Array[String], Array[Array[String]]) -> String
 
 pub fn render_ascii_scatter(Array[@core.Vec2], width? : Int, height? : Int, x_min? : Double, x_max? : Double, y_min? : Double, y_max? : Double, title? : String) -> String
 
