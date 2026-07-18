@@ -1,3 +1,4 @@
+///|
 fn main {
   let rng = @core.Rng::new(seed=42UL)
   let moons = @dataset.sample_two_moons(120, noise=0.05, rng)
@@ -13,7 +14,7 @@ fn main {
     rng,
     record_interval=10,
   )
-  
+
   let html_report = @visualize.generate_html_report(
     ddpm_traj,
     title="MoonDiffusionLab Two Moons Experiment",
