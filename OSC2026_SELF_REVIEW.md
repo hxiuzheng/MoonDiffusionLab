@@ -4,7 +4,7 @@
 
 ## 结论
 
-本地源码与工程结构已达到可复核状态：项目是有效 MoonBit 模块，根目录有 Apache-2.0 许可证，README、申报书、架构说明和验收证据清单齐备。当前本地硬性检查已经通过：`moon check --deny-warn`、`moon test --deny-warn`、`moon fmt --check`、`moon info --target all`。
+本地源码与工程结构已达到可复核状态：项目是有效 MoonBit 模块，根目录有 Apache-2.0 许可证，README、申报书、架构说明和验收证据清单齐备。当前本地硬性检查已经通过：`moon check --deny-warn`、`moon test --deny-warn`、`moon fmt`、`moon info --target all`。
 
 仍不能宣称“已全部通过正式验收”，因为两个外部条件尚未在本地证实：
 

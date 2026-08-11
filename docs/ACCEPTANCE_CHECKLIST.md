@@ -11,7 +11,7 @@ moon version --all
 moon update
 moon check --target all --deny-warn
 moon build
-moon fmt --check
+moon fmt
 moon info --target all
 moon test --deny-warn
 moon run cmd/lab

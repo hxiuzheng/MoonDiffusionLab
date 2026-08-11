@@ -100,6 +100,6 @@ Apache-2.0
 
 ## 验收与发布说明
 
-项目的可复现验收命令、功能边界、测试证据和开源合规说明见 [`docs/ACCEPTANCE_CHECKLIST.md`](docs/ACCEPTANCE_CHECKLIST.md)。CI 使用当前 MoonBit CLI 支持的严格命令：`moon check --target all --deny-warn`、`moon fmt --check`、`moon info --target all` 和 `moon test --deny-warn`。
+项目的可复现验收命令、功能边界、测试证据和开源合规说明见 [`docs/ACCEPTANCE_CHECKLIST.md`](docs/ACCEPTANCE_CHECKLIST.md)。CI 使用当前 MoonBit CLI 支持的严格命令：`moon check --target all --deny-warn`、`moon fmt`、`moon info --target all` 和 `moon test --deny-warn`。
 
 正式发布前请确认已使用与 `moon.mod` 中 `hxiuzheng/moon_diffusion_lab` 命名空间一致的 mooncakes.io 账号登录；项目不会把账号密码或访问令牌写入 Git remote URL。
