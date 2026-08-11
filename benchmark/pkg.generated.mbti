@@ -1,0 +1,85 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "hxiuzheng/moon_diffusion_lab/benchmark"
+
+import {
+  "hxiuzheng/moon_diffusion_lab/core",
+  "hxiuzheng/moon_diffusion_lab/schedule",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn evaluate_metrics(Array[@core.Vec2], Array[@core.Vec2]) -> BenchmarkMetrics
+
+pub fn generate_target(BenchmarkDataset, Int, @core.Rng) -> Array[@core.Vec2]
+
+pub fn report_csv_row(BenchmarkReport) -> String
+
+pub fn report_json(BenchmarkReport) -> String
+
+pub fn run_benchmark(BenchmarkConfig) -> BenchmarkReport
+
+pub fn run_suite(SamplerBackend, UInt64) -> Array[BenchmarkReport]
+
+pub fn schedule_for(BenchmarkDataset, Int) -> @schedule.DiffusionSchedule
+
+pub fn suite_csv(Array[BenchmarkReport]) -> String
+
+pub fn suite_is_healthy(Array[BenchmarkReport], minimum_rate? : Double) -> Bool
+
+pub fn suite_markdown(Array[BenchmarkReport]) -> String
+
+pub fn suite_pass_rate(Array[BenchmarkReport]) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct BenchmarkConfig {
+  dataset : BenchmarkDataset
+  sampler : SamplerBackend
+  target_count : Int
+  sample_count : Int
+  diffusion_steps : Int
+  sampling_steps : Int
+  seed : UInt64
+} derive(Eq, @debug.Debug)
+pub fn BenchmarkConfig::is_valid(Self) -> Bool
+pub fn BenchmarkConfig::quick(BenchmarkDataset, SamplerBackend, UInt64) -> Self
+pub fn BenchmarkConfig::validation_message(Self) -> String
+
+pub(all) enum BenchmarkDataset {
+  Uniform1D
+  Gaussian1D
+  TwoMoons
+  SwissRoll
+  GmmRing
+  Bimodal
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BenchmarkMetrics {
+  wasserstein : Double
+  mean_error : Double
+  variance_error : Double
+  coverage : Double
+  out_of_bounds : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BenchmarkReport {
+  dataset : BenchmarkDataset
+  sampler : SamplerBackend
+  seed : UInt64
+  target_count : Int
+  sample_count : Int
+  metrics : BenchmarkMetrics
+  passed : Bool
+} derive(Eq, @debug.Debug)
+
+pub(all) enum SamplerBackend {
+  DDPM
+  DDIM
+  Euler
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

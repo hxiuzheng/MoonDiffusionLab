@@ -53,6 +53,18 @@ moon test
 - 集成 DDPM、DDIM、Euler ODE 采样器及 JSON、Markdown 导出。
 - 支持终端 ASCII、SVG 流场和交互式 HTML 报告多模态呈现。
 
+## 可复现实验基准
+
+`benchmark` 包提供面向实际实验流程的统一评估入口：支持 Uniform、Gaussian、Two Moons、Swiss Roll、GMM Ring 和 Bimodal 六类数据集，覆盖 DDPM、DDIM、Euler 三种采样后端，并计算 Wasserstein 距离、均值误差、方差误差、覆盖率和越界点数。批量结果可导出为 JSON、CSV 或 Markdown，适合接入 CI、Notebook 和实验报告：
+
+```mbt nocheck
+let reports = @benchmark.run_suite(@benchmark.DDIM, 2026UL)
+println(@benchmark.suite_markdown(reports))
+println(@benchmark.suite_csv(reports))
+```
+
+该基准使用固定 seed 和程序生成数据，确保在无网络环境下也能复现；它用于回归比较和教学实验，不冒充外部真实数据集的统计结论。
+
 ## CI
 
 仓库已补充 GitHub Actions 自动化工作流，每次推送时会自动执行以下步骤（不再使用旧版不支持的参数）：
