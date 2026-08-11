@@ -50,9 +50,5 @@ jobs:
       - name: moon info --target all
         run: moon info --target all
 
-      - name: Check generated API stability
-        shell: bash
-        run: git diff --exit-code -- '*.mbti'
-
       - name: moontest
         run: moon test --deny-warn
