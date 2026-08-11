@@ -91,9 +91,15 @@ fn main {
 - 已通过最新版 `moon check`, `moon build`, `moon test` (19/19)。
 - 已完善 `ToyMLP` 的 DDPM 采样闭环。
 - 已补齐 GitHub Actions CI 流水线。
-- 已发布至 [mooncakes.io](https://mooncakes.io/)。
-- 提供真正的落盘示例 (`assets/demo.svg` 与 `assets/demo.html`)。
+- `moon publish --dry-run` 已通过本地打包校验；正式发布需使用与模块命名空间一致的 mooncakes.io 账号。
+- 提供可由命令生成并落盘的 SVG/HTML 实验产物（默认输出目录为 `assets/`）。
 
 ## 许可证
 
 Apache-2.0
+
+## 验收与发布说明
+
+项目的可复现验收命令、功能边界、测试证据和开源合规说明见 [`docs/ACCEPTANCE_CHECKLIST.md`](docs/ACCEPTANCE_CHECKLIST.md)。CI 使用当前 MoonBit CLI 支持的严格命令：`moon check --target all --deny-warn`、`moon fmt --check`、`moon info --target all` 和 `moon test --deny-warn`。
+
+正式发布前请确认已使用与 `moon.mod` 中 `hxiuzheng/moon_diffusion_lab` 命名空间一致的 mooncakes.io 账号登录；项目不会把账号密码或访问令牌写入 Git remote URL。

@@ -42,13 +42,17 @@ jobs:
         run: moon update
 
       - name: moon check
-        run: moon check --target all
+        run: moon check --target all --deny-warn
 
-      - name: moon fmt --deny-warn
-        run: moon fmt --deny-warn
+      - name: moon fmt --check
+        run: moon fmt --check
 
-      - name: moon info --deny-warn
-        run: moon info --deny-warn
+      - name: moon info --target all
+        run: moon info --target all
+
+      - name: Check generated API stability
+        shell: bash
+        run: git diff --exit-code -- '*.mbti'
 
       - name: moontest
-        run: moon test --target all
+        run: moon test --deny-warn

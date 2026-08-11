@@ -53,7 +53,7 @@ fn main {
 
   println("--> Starting DDPM Analytical Reverse Denoising Sampling...")
   let model_moons = @model.AnalyticalModel::new(moons, bandwidth=0.1)
-  let (ddpm_samples, ddpm_traj) = @diffusion.sample_ddpm_analytical(
+  let (ddpm_samples, _) = @diffusion.sample_ddpm_analytical(
     120,
     model_moons,
     sched,

@@ -19,7 +19,7 @@
   - 本地执行 `moon test` 结果为 `19/19` 全通过。
 - **CI 状态**
   - 已新增 `.github/workflows/test.yml`。
-  - CI 明确包含 `moon check`、`moon fmt --deny-warn`、`moon info --deny-warn`、`moon test --target all` 四个过程。
+  - CI 明确包含 `moon check --target all --deny-warn`、`moon fmt --check`、`moon info --target all`、`moon test --deny-warn` 四个过程。
 
 ## 3. 结项要点
 

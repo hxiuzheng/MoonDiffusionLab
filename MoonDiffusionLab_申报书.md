@@ -39,7 +39,7 @@
 - **`diffusion` & `visualize`**：DDPM / DDIM / Euler ODE 核心采样引擎与多模态可视化渲染器。
 - **`cmd/lab`**：综合实验命令行工具，提供端到端可视化实验交互。
 
-**项目现状与质量**：有效纯 MoonBit 源码近千行，全仓 17/17 单元测试 100% 通过（0 错误 0 警告），具备 10+ 次语义化 Git 原子提交，完美符合大赛对原创高质量开源作品的全部标准。
+**项目现状与质量**：当前仓库包含 34 个 MoonBit 源文件、约 1,813 行有效源码，`moon test --deny-warn` 为 19/19 通过，功能覆盖核心张量与统计、三类噪声调度、四类程序生成数据、解析式与 Toy MLP 预测、DDPM/DDIM/Euler 采样和 ASCII/SVG/HTML/JSON/Markdown 导出。项目定位为可复现的 1D/2D 教学与实验工具，不宣称生产级训练框架；验收命令与边界证据见 `docs/ACCEPTANCE_CHECKLIST.md`。
 
 ---
 
