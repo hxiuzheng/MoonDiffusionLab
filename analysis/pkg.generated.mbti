@@ -1,0 +1,171 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "hxiuzheng/moon_diffusion_lab/analysis"
+
+import {
+  "hxiuzheng/moon_diffusion_lab/benchmark",
+  "hxiuzheng/moon_diffusion_lab/core",
+  "hxiuzheng/moon_diffusion_lab/experiment",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn accepts(CalibrationResult, Double) -> Bool
+
+pub fn bootstrap_mean(Array[Double], Int, Int) -> BootstrapInterval
+
+pub fn bounding_box(Array[@core.Vec2]) -> (@core.Vec2, @core.Vec2)
+
+pub fn calibrate(Array[@benchmark.BenchmarkReport], Double) -> CalibrationResult
+
+pub fn calibration_markdown(CalibrationResult) -> String
+
+pub fn check_comparison(ComparisonPolicy, DistributionComparison) -> ComparisonDecision
+
+pub fn check_report(MonitorPolicy, @benchmark.BenchmarkReport) -> MonitorDecision
+
+pub fn check_reports(MonitorPolicy, Array[@benchmark.BenchmarkReport]) -> MonitorDecision
+
+pub fn compare(Array[@core.Vec2], Array[@core.Vec2], Int, Double) -> DistributionComparison
+
+pub fn comparison_csv(DistributionComparison) -> String
+
+pub fn comparison_decision_markdown(ComparisonDecision) -> String
+
+pub fn comparison_markdown(DistributionComparison) -> String
+
+pub fn comparison_pass_rate(ComparisonPolicy, Array[DistributionComparison]) -> Double
+
+pub fn decision_markdown(MonitorDecision) -> String
+
+pub fn diversity_gap(Array[@core.Vec2], Array[@core.Vec2]) -> Double
+
+pub fn duplicate_ratio(Array[@core.Vec2], tolerance? : Double) -> Double
+
+pub fn energy_distance(Array[@core.Vec2], Array[@core.Vec2]) -> Double
+
+pub fn fixed_grid_intersection(Array[@core.Vec2], Array[@core.Vec2], Int, @core.Vec2, @core.Vec2) -> Double
+
+pub fn interval_markdown(String, BootstrapInterval) -> String
+
+pub fn maximum_mean_discrepancy(Array[@core.Vec2], Array[@core.Vec2], Double) -> Double
+
+pub fn mean(Array[Double]) -> Double
+
+pub fn mean_nearest_neighbor_distance(Array[@core.Vec2]) -> Double
+
+pub fn percentile(Array[Double], Double) -> Double
+
+pub fn quality_score(Array[@core.Vec2], Array[@core.Vec2], Int) -> Double
+
+pub fn quantile_axis(Array[@core.Vec2], Int, Double) -> Double
+
+pub fn standard_deviation(Array[Double], Double) -> Double
+
+pub fn summarize(Array[@core.Vec2]) -> DistributionSummary
+
+pub fn summary_markdown(String, DistributionSummary) -> String
+
+pub fn wasserstein_interval(Array[@experiment.ExperimentResult], Int, Int) -> BootstrapInterval
+
+// Errors
+
+// Types and methods
+pub(all) struct BootstrapInterval {
+  estimate : Double
+  lower : Double
+  upper : Double
+  resamples : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct CalibrationResult {
+  sample_count : Int
+  target_pass_rate : Double
+  percentile : Double
+  percentile_value : Double
+  mean : Double
+  standard_deviation : Double
+  recommended_threshold : Double
+  observed_pass_rate : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ComparisonDecision {
+  passed : Bool
+  failed_checks : Int
+  score : Double
+  reason : String
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ComparisonPolicy {
+  max_energy_distance : Double
+  max_mmd : Double
+  min_intersection : Double
+  min_quality_score : Double
+  max_diversity_gap : Double
+} derive(Eq, @debug.Debug)
+pub fn ComparisonPolicy::default() -> Self
+
+pub(all) struct DistributionComparison {
+  energy_distance : Double
+  mmd_rbf : Double
+  histogram_intersection : Double
+  quality_score : Double
+  target_nn_distance : Double
+  generated_nn_distance : Double
+  diversity_gap : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct DistributionSummary {
+  count : Int
+  mean : @core.Vec2
+  variance : @core.Vec2
+  minimum : @core.Vec2
+  maximum : @core.Vec2
+  duplicate_ratio : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Histogram2D {
+  bins_x : Int
+  bins_y : Int
+  min_x : Double
+  max_x : Double
+  min_y : Double
+  max_y : Double
+  counts : Array[Int]
+} derive(Eq, @debug.Debug)
+pub fn Histogram2D::add(Self, @core.Vec2) -> Unit
+pub fn Histogram2D::chi_square(Self, Self) -> Double
+pub fn Histogram2D::count(Self, Int, Int) -> Int
+pub fn Histogram2D::density(Self, Int, Int) -> Double
+pub fn Histogram2D::entropy(Self) -> Double
+pub fn Histogram2D::from_points(Array[@core.Vec2], Int, Int) -> Self
+pub fn Histogram2D::intersection(Self, Self) -> Double
+pub fn Histogram2D::new(Int, Int, Double, Double, Double, Double) -> Self
+pub fn Histogram2D::to_ascii(Self) -> String
+pub fn Histogram2D::to_csv(Self) -> String
+pub fn Histogram2D::total_density(Self) -> Double
+
+pub(all) struct MonitorDecision {
+  status : MonitorStatus
+  score : Double
+  reason : String
+} derive(Eq, @debug.Debug)
+
+pub(all) struct MonitorPolicy {
+  max_wasserstein : Double
+  max_mean_error : Double
+  max_variance_error : Double
+  min_coverage : Double
+  min_pass_rate : Double
+} derive(Eq, @debug.Debug)
+pub fn MonitorPolicy::default() -> Self
+
+pub(all) enum MonitorStatus {
+  Pass
+  Warning
+  Fail
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

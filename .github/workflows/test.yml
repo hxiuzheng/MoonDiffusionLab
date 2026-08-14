@@ -44,6 +44,9 @@ jobs:
       - name: moon check
         run: moon check --target all --deny-warn
 
+      - name: moon build
+        run: moon build
+
       - name: moon fmt compatibility check
         run: moon fmt
 

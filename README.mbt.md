@@ -3,7 +3,7 @@
 [![MoonBit](https://img.shields.io/badge/Language-MoonBit-00ffcc?style=flat-square)](https://www.moonbitlang.com/)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 [![OSC 2026](https://img.shields.io/badge/Competition-OSC%202026-ff3366?style=flat-square)](https://moonbitlang.github.io/OSC2026/)
-[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-111827?style=flat-square)](./.github/workflows/check.yml)
+[![CI](https://img.shields.io/badge/CI-GitHub%20Actions-111827?style=flat-square)](./.github/workflows/test.yml)
 
 MoonDiffusionLab 是一个基于 **MoonBit v0.10.3** 纯原生实现的 1D/2D Toy Diffusion 教学与实验工具箱，面向生成模型原理演示、采样过程观察和多模态可视化对比。
 
@@ -27,6 +27,11 @@ moon add hxiuzheng/moon_diffusion_lab
 运行内置的实验主程序直接在控制台观看 ASCII 扩散动画：
 ```bash
 moon run cmd/lab
+```
+重复实验与质量报告也可以直接运行：
+```bash
+moon run cmd/experiment_runner
+moon run cmd/quality_report
 ```
 **可视化产物（SVG/HTML）真实落盘复现**：
 本项目支持将采样流场和多帧交互报告保存为静态文件。您可以直接运行脚本生成（或使用 `>` 重定向输出）：
@@ -100,10 +105,10 @@ fn main {
 
 ## 结项状态
 
-- 已通过最新版 `moon check`, `moon build`, `moon test` (19/19)。
+- 当前仓库包含 58 个 MoonBit 文件、4,145 行源码，40/40 测试通过。
 - 已完善 `ToyMLP` 的 DDPM 采样闭环。
 - 已补齐 GitHub Actions CI 流水线。
-- `moon publish --dry-run` 已通过本地打包校验；正式发布需使用与模块命名空间一致的 mooncakes.io 账号。
+- 待使用 `hxiuzheng` 身份正式发布至 mooncakes.io：`hxiuzheng/moon_diffusion_lab@0.1.4`。
 - 提供可由命令生成并落盘的 SVG/HTML 实验产物（默认输出目录为 `assets/`）。
 
 ## 许可证

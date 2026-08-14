@@ -1,6 +1,6 @@
 name = "hxiuzheng/moon_diffusion_lab"
 
-version = "0.1.3"
+version = "0.1.4"
 
 readme = "README.mbt.md"
 

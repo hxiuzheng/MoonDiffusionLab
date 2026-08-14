@@ -1,0 +1,72 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "hxiuzheng/moon_diffusion_lab/experiment"
+
+import {
+  "hxiuzheng/moon_diffusion_lab/benchmark",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn average_pass_rate(Array[ExperimentResult]) -> Double
+
+pub fn best_result(Array[ExperimentResult]) -> ExperimentResult?
+
+pub fn default_plan(UInt64, Int) -> Array[ExperimentCase]
+
+pub fn filter_by_pass_rate(Array[ExperimentResult], Double) -> Array[ExperimentResult]
+
+pub fn result_json(ExperimentResult) -> String
+
+pub fn results_csv(Array[ExperimentResult]) -> String
+
+pub fn results_markdown(Array[ExperimentResult]) -> String
+
+pub fn run_case(ExperimentCase) -> ExperimentResult
+
+pub fn run_plan(Array[ExperimentCase]) -> Array[ExperimentResult]
+
+pub fn sampler_summary_markdown(Array[ExperimentResult]) -> String
+
+pub fn select_stable_best(Array[ExperimentResult]) -> ExperimentResult?
+
+pub fn summarize_sampler(Array[ExperimentResult], @benchmark.SamplerBackend) -> SamplerSummary
+
+// Errors
+
+// Types and methods
+pub(all) struct ExperimentCase {
+  name : String
+  config : @benchmark.BenchmarkConfig
+  repeats : Int
+} derive(Eq, @debug.Debug)
+pub fn ExperimentCase::new(String, @benchmark.BenchmarkConfig, Int) -> Self
+
+pub(all) struct ExperimentResult {
+  name : String
+  dataset : @benchmark.BenchmarkDataset
+  sampler : @benchmark.SamplerBackend
+  repeats : Int
+  mean_wasserstein : Double
+  std_wasserstein : Double
+  min_wasserstein : Double
+  max_wasserstein : Double
+  mean_error : Double
+  variance_error : Double
+  mean_coverage : Double
+  pass_rate : Double
+  best_seed : UInt64
+} derive(Eq, @debug.Debug)
+
+pub(all) struct SamplerSummary {
+  sampler : @benchmark.SamplerBackend
+  cases : Int
+  mean_wasserstein : Double
+  mean_coverage : Double
+  mean_pass_rate : Double
+  stable_cases : Int
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

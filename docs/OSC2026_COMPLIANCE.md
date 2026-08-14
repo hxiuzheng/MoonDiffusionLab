@@ -16,10 +16,11 @@
   - `README.mbt.md` 和 `README.md` 已覆盖项目定位、数学原理、使用方法与示例。
 - **测试结果**
   - 本地执行 `moon check` 通过。
-  - 本地执行 `moon test` 结果为 `19/19` 全通过。
+  - 本地执行 `moon build` 通过。
+  - 本地执行 `moon test --deny-warn` 结果为 `40/40` 全通过。
 - **CI 状态**
   - 已新增 `.github/workflows/test.yml`。
-  - CI 明确包含 `moon check --target all --deny-warn`、`moon fmt`、`moon info --target all`、`moon test --deny-warn` 四个过程；`moon fmt --check` 与当前 CLI 的旧 `options(is_main)` 语法不兼容，因此不作为 CI 阻断项。
+  - CI 明确包含 `moon check --target all --deny-warn`、`moon build`、`moon fmt`、`moon info --target all`、`moon test --deny-warn` 五个过程；`moon fmt --check` 与当前 CLI 的旧 `options(is_main)` 语法不兼容，因此不作为 CI 阻断项。
 
 ## 3. 结项要点
 

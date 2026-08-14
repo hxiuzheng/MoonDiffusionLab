@@ -8,9 +8,29 @@ import {
 }
 
 // Values
+pub fn all_datasets() -> Array[BenchmarkDataset]
+
+pub fn all_samplers() -> Array[SamplerBackend]
+
+pub fn best_report(DatasetBenchmarkSummary) -> BenchmarkReport?
+
+pub fn compare_all(UInt64) -> Array[DatasetBenchmarkSummary]
+
+pub fn compare_samplers(BenchmarkDataset, UInt64) -> DatasetBenchmarkSummary
+
+pub fn dataset_has_passing_sampler(DatasetBenchmarkSummary) -> Bool
+
 pub fn evaluate_metrics(Array[@core.Vec2], Array[@core.Vec2]) -> BenchmarkMetrics
 
 pub fn generate_target(BenchmarkDataset, Int, @core.Rng) -> Array[@core.Vec2]
+
+pub fn healthy_dataset_count(Array[DatasetBenchmarkSummary], Double) -> Int
+
+pub fn overall_pass_rate(Array[DatasetBenchmarkSummary]) -> Double
+
+pub fn passing_sampler_count(DatasetBenchmarkSummary) -> Int
+
+pub fn registry_is_healthy(Array[DatasetBenchmarkSummary], Double) -> Bool
 
 pub fn report_csv_row(BenchmarkReport) -> String
 
@@ -19,6 +39,8 @@ pub fn report_json(BenchmarkReport) -> String
 pub fn run_benchmark(BenchmarkConfig) -> BenchmarkReport
 
 pub fn run_suite(SamplerBackend, UInt64) -> Array[BenchmarkReport]
+
+pub fn sampler_coverage(DatasetBenchmarkSummary) -> Int
 
 pub fn schedule_for(BenchmarkDataset, Int) -> @schedule.DiffusionSchedule
 
@@ -29,6 +51,10 @@ pub fn suite_is_healthy(Array[BenchmarkReport], minimum_rate? : Double) -> Bool
 pub fn suite_markdown(Array[BenchmarkReport]) -> String
 
 pub fn suite_pass_rate(Array[BenchmarkReport]) -> Double
+
+pub fn summaries_json(Array[DatasetBenchmarkSummary]) -> String
+
+pub fn summaries_markdown(Array[DatasetBenchmarkSummary]) -> String
 
 // Errors
 
@@ -71,6 +97,14 @@ pub(all) struct BenchmarkReport {
   sample_count : Int
   metrics : BenchmarkMetrics
   passed : Bool
+} derive(Eq, @debug.Debug)
+
+pub(all) struct DatasetBenchmarkSummary {
+  dataset : BenchmarkDataset
+  reports : Array[BenchmarkReport]
+  best_sampler : SamplerBackend
+  best_wasserstein : Double
+  pass_rate : Double
 } derive(Eq, @debug.Debug)
 
 pub(all) enum SamplerBackend {

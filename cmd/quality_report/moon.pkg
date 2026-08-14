@@ -1,0 +1,9 @@
+import {
+  "hxiuzheng/moon_diffusion_lab/analysis",
+  "hxiuzheng/moon_diffusion_lab/benchmark",
+  "hxiuzheng/moon_diffusion_lab/core",
+}
+
+options(
+  is_main: true,
+)

@@ -15,6 +15,8 @@ moon fmt
 moon info --target all
 moon test --deny-warn
 moon run cmd/lab
+moon run cmd/experiment_runner
+moon run cmd/quality_report
 ```
 
 CI 对 Ubuntu、macOS、Windows 三个平台执行同一组检查，工作流位于 `.github/workflows/test.yml`。
@@ -39,4 +41,4 @@ CI 对 Ubuntu、macOS、Windows 三个平台执行同一组检查，工作流位
 
 ## 发布状态
 
-`moon publish --dry-run` 已通过本地打包、解包和再次检查。正式发布还需要使用与 `moon.mod` 模块命名空间 `hxiuzheng` 一致的 mooncakes.io 账号完成认证；认证用户不一致时，发布会被注册中心拒绝。
+当前模块版本为 `hxiuzheng/moon_diffusion_lab@0.1.4`；正式发布后应在干净临时目录执行 `moon add hxiuzheng/moon_diffusion_lab`，并把成功结果与远端 CI 运行记录一并作为验收证据。
