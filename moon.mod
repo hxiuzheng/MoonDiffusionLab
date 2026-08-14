@@ -4,7 +4,7 @@ version = "0.1.4"
 
 readme = "README.mbt.md"
 
-repository = "https://github.com/hxiuzheng/moon_diffusion_lab"
+repository = "https://github.com/hxiuzheng/MoonDiffusionLab"
 
 license = "Apache-2.0"
 

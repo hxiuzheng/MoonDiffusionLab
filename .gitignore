@@ -4,6 +4,7 @@
 *.wasm
 *.js
 *.svg
+!assets/demo.svg
 *.json
 !README*.json
 .DS_Store

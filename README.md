@@ -41,6 +41,7 @@ moon run cmd/export_html > assets/demo.html
 # 生成流场矢量图
 moon run cmd/export_svg > assets/demo.svg
 ```
+仓库同时保留可直接查看的 `assets/demo.html` 与 `assets/demo.svg` 示例，便于离线验收和复现实验产物。
 
 ### 4. 测试与构建
 ```bash
