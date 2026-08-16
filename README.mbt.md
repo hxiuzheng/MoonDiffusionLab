@@ -124,7 +124,7 @@ fn main {
 - 当前仓库包含 61 个 MoonBit 文件、4,689 行源码，43/43 测试通过。
 - 已完善 `ToyMLP` 的 DDPM 采样闭环。
 - 已补齐 GitHub Actions CI 流水线。
-- 发布前验收门禁已接入，当前模块版本为 `hxiuzheng/moon_diffusion_lab@0.1.5`。
+- 发布验收门禁已通过，当前模块版本为 `hxiuzheng/moon_diffusion_lab@0.1.6`。
 - 提供可由命令生成并落盘的 SVG/HTML 实验产物（默认输出目录为 `assets/`）。
 
 ## 许可证

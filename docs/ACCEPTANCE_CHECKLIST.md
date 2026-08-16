@@ -46,5 +46,5 @@ CI 对 Ubuntu、macOS、Windows 三个平台执行同一组检查，工作流位
 
 ## 发布状态
 
-当前模块版本为 `hxiuzheng/moon_diffusion_lab@0.1.5`；正式发布后应在干净临时目录执行
-`moon add hxiuzheng/moon_diffusion_lab`，并把成功结果与远端 CI 运行记录一并作为验收证据。
+当前模块版本为 `hxiuzheng/moon_diffusion_lab@0.1.6`，已正式发布；独立消费者项目已用
+`moon add hxiuzheng/moon_diffusion_lab` 锁定该版本并通过 `moon check --target all --deny-warn`。
