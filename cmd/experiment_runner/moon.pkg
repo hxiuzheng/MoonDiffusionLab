@@ -2,6 +2,4 @@ import {
   "hxiuzheng/moon_diffusion_lab/experiment",
 }
 
-options(
-  is_main: true,
-)
+pkgtype(kind: "executable")

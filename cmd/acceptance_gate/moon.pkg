@@ -1,0 +1,5 @@
+import {
+  "hxiuzheng/moon_diffusion_lab/acceptance",
+}
+
+pkgtype(kind: "executable")

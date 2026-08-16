@@ -39,4 +39,3 @@ pub(all) enum ScheduleType {
 // Type aliases
 
 // Traits
-

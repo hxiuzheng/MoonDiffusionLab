@@ -55,3 +55,12 @@ jobs:
 
       - name: moontest
         run: moon test --deny-warn
+
+      - name: CLI workflow smoke tests
+        run: |
+          moon run cmd/lab > cli_lab_output.txt
+          moon run cmd/experiment_runner > cli_experiment_output.txt
+          moon run cmd/quality_report > cli_quality_output.txt
+          moon run cmd/export_html > ci_demo.html
+          moon run cmd/export_svg > ci_demo.svg
+          moon run cmd/acceptance_gate > cli_acceptance_output.txt

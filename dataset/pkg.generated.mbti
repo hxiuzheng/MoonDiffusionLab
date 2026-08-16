@@ -25,4 +25,3 @@ pub fn sample_two_moons(Int, noise? : Double, @core.Rng) -> Array[@core.Vec2]
 // Type aliases
 
 // Traits
-

@@ -1,10 +1,11 @@
 import {
+  "hxiuzheng/moon_diffusion_lab/analysis",
+  "hxiuzheng/moon_diffusion_lab/benchmark",
   "hxiuzheng/moon_diffusion_lab/core",
   "hxiuzheng/moon_diffusion_lab/dataset",
   "hxiuzheng/moon_diffusion_lab/diffusion",
+  "hxiuzheng/moon_diffusion_lab/experiment",
   "hxiuzheng/moon_diffusion_lab/model",
   "hxiuzheng/moon_diffusion_lab/schedule",
   "hxiuzheng/moon_diffusion_lab/visualize",
 }
-
-pkgtype(kind: "executable")

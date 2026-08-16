@@ -1,0 +1,49 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "hxiuzheng/moon_diffusion_lab/acceptance"
+
+import {
+  "hxiuzheng/moon_diffusion_lab/benchmark",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn artifact_is_valid(String, String) -> Bool
+
+pub fn checks_are_ready(Array[GateCheck]) -> Bool
+
+pub fn failed_check_names(Array[GateCheck]) -> String
+
+pub fn matrix_is_complete(Array[@benchmark.DatasetBenchmarkSummary], Int, Int) -> Bool
+
+pub fn report_json(AcceptanceReport) -> String
+
+pub fn report_markdown(AcceptanceReport) -> String
+
+pub fn run_release_gate(UInt64) -> AcceptanceReport
+
+// Errors
+
+// Types and methods
+pub(all) struct AcceptanceReport {
+  seed : UInt64
+  checks : Array[GateCheck]
+  benchmark_case_count : Int
+  experiment_case_count : Int
+  benchmark_pass_rate : Double
+  experiment_pass_rate : Double
+  quality_score : Double
+  html_bytes : Int
+  svg_bytes : Int
+  ready : Bool
+} derive(Eq, @debug.Debug)
+
+pub(all) struct GateCheck {
+  name : String
+  passed : Bool
+  detail : String
+} derive(Eq, @debug.Debug)
+pub fn GateCheck::new(String, Bool, String) -> Self
+
+// Type aliases
+
+// Traits

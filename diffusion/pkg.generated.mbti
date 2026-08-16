@@ -37,4 +37,3 @@ pub fn Trajectory::num_frames(Self) -> Int
 // Type aliases
 
 // Traits
-

@@ -69,4 +69,3 @@ pub(all) struct SamplerSummary {
 // Type aliases
 
 // Traits
-

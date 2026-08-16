@@ -168,4 +168,3 @@ pub(all) enum MonitorStatus {
 // Type aliases
 
 // Traits
-

@@ -33,4 +33,3 @@ pub fn ToyMLP::predict(Self, @core.Vec2, Double) -> @core.Vec2
 // Type aliases
 
 // Traits
-

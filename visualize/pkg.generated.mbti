@@ -28,4 +28,3 @@ pub fn render_svg_vector_field(@model.AnalyticalModel, @schedule.DiffusionSchedu
 // Type aliases
 
 // Traits
-

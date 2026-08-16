@@ -6,6 +6,4 @@ import {
   "hxiuzheng/moon_diffusion_lab/visualize",
 }
 
-options(
-  is_main: true,
-)
+pkgtype(kind: "executable")

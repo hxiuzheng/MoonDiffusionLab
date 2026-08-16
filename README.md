@@ -32,6 +32,7 @@ moon run cmd/lab
 ```bash
 moon run cmd/experiment_runner
 moon run cmd/quality_report
+moon run cmd/acceptance_gate
 ```
 **可视化产物（SVG/HTML）真实落盘复现**：
 本项目支持将采样流场和多帧交互报告保存为静态文件。您可以直接运行脚本生成（或使用 `>` 重定向输出）：
@@ -43,11 +44,18 @@ moon run cmd/export_svg > assets/demo.svg
 ```
 仓库同时保留可直接查看的 `assets/demo.html` 与 `assets/demo.svg` 示例，便于离线验收和复现实验产物。
 
+发布前完整工作链由 `cmd/acceptance_gate` 固化：它会运行六类程序生成数据集与三种采样器的
+18 项基准、18 项重复实验、Two Moons 多指标质量阈值、HTML/SVG 结构检查，以及 Markdown/JSON/CSV
+导出检查。固定 seed 下的报告可直接作为本地或 CI 验收证据。
+
 ### 4. 测试与构建
 ```bash
-moon check
+moon check --target all --deny-warn
 moon build
-moon test
+moon fmt
+moon info --target all
+moon test --deny-warn
+moon run cmd/acceptance_gate
 ```
 
 ## 项目特点
@@ -75,12 +83,19 @@ println(@benchmark.suite_csv(reports))
 
 仓库已补充 GitHub Actions 自动化工作流，每次推送时会自动执行以下步骤（不再使用旧版不支持的参数）：
 ```bash
-moon check
+moon check --target all --deny-warn
 moon build
-moon test
+moon fmt
+moon info --target all
+moon test --deny-warn
+moon run cmd/acceptance_gate
+
 ```
 
 ## 代码示例
+
+同一工作流在 Ubuntu、macOS、Windows 三个平台执行 CLI smoke tests，并生成临时 HTML/SVG
+产物验证完整工作链。
 
 ```mbt nocheck
 import {
@@ -106,10 +121,10 @@ fn main {
 
 ## 结项状态
 
-- 当前仓库包含 58 个 MoonBit 文件、4,145 行源码，40/40 测试通过。
+- 当前仓库包含 61 个 MoonBit 文件、4,689 行源码，43/43 测试通过。
 - 已完善 `ToyMLP` 的 DDPM 采样闭环。
 - 已补齐 GitHub Actions CI 流水线。
-- 待使用 `hxiuzheng` 身份正式发布至 mooncakes.io：`hxiuzheng/moon_diffusion_lab@0.1.4`。
+- 发布前验收门禁已接入，当前模块版本为 `hxiuzheng/moon_diffusion_lab@0.1.5`。
 - 提供可由命令生成并落盘的 SVG/HTML 实验产物（默认输出目录为 `assets/`）。
 
 ## 许可证
